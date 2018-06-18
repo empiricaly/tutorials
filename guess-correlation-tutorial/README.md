@@ -78,10 +78,10 @@ message indicating that there are no available experiments.
 Let's change that. There is another path where the experiment designer can
 configure and monitor the experiment. Navigate to `http://localhost:3000/admin`.
 You will be prompted to enter a username and password. The login credentials can
-be found in `/import/core/startup/server/bootstrap.js`.
+be found in `/import/core/startup/server/bootstrap.js`. 
 
 We highly recommend that you change the username and password in the
-`bootstrap.js' file and then reset your app using`meteor reset' from the
+`bootstrap.js` file and then reset your app using `meteor reset` from the
 terminal (you have to do `meteor reset` when you are inside the `empirica/`
 directory). After you are logged in, you should see the following:
 
@@ -175,7 +175,7 @@ actual more useful experiment!
 
 ## Simple guess the correlation game
 
-In our paper [The Wisdom of the Network](https://arxiv.org/abs/1805.04766), we
+In our paper [The Wisdom of the Network](https://arxiv.org/abs/1805.04766) paper, we
 developed a web-based experiment that allowed us to identify the role of dynamic
 networks in fostering an adaptive "wisdom of crowds". Participants (n = 719)
 from Amazon Mechanical Turk. Participants engaged in a sequence of 20 estimation
@@ -187,6 +187,7 @@ individual solved the sequence of tasks in isolation; a static treatment, in
 which participants were randomly placed in static communication networks; and a
 dynamic treatment, in which participants at each round were allowed to select up
 to three neighbors to 3 communicate with.
+
 
 In this tutorial, we will stick to the first two treatments (solo players, and
 groups in static communication networks). However, for the second treatment, we
@@ -227,7 +228,7 @@ interested in a couple of folders:
         be fully controlled from the interface in future versions.
       * `init.js`: Initiating the game. This returns an array of rounds and
         players.
-      * `callbacks.js`: What happens at the beginning and end of the rounds and
+      * `callbacks.js`: What happens at the beginning and end of the game, rounds, and
         between the stages.
     * `bots.js`: specifying the behavior of artificial bots. We will not use
       this in this tutorial.
@@ -446,7 +447,7 @@ control what the player sees in each stage. So, to show the social exposure only
 during the interactive stage, we need to update the code in
 `/imports/experiment/client/game/Round.jsx` to reflect that:
 
-```react
+```jsx
 export default class Round extends React.Component {
   render() {
     const { round, stage, player, game } = this.props;
@@ -473,7 +474,7 @@ let's go to `/imports/experiment/client/game/TaskStimulus.jsx` and ensure that
 we display the task path from the round data. To make things pretty, we will
 make the scatter plot transparent during the round outcome stage
 
-```javascript
+```jsx
 export default class TaskStimulus extends React.Component {
   render() {
     const { round, stage } = this.props;
@@ -503,7 +504,7 @@ slider during the round outcome stage. While this block of code might look
 involved, it is not! Just small changes to the current default slider such that
 it looks like this:
 
-```javascript
+```jsx
 import { Slider } from "@blueprintjs/core";
 import React from "react";
 
@@ -610,9 +611,9 @@ the changes.
 ### Social Exposure
 
 During the interactive stage, we show the player his neighbors answers in
-realtime. While this works by default (as part of the default Empirica app),
+real-time. While this works by default (as part of the default Empirica app),
 however, recall that we changed the player main input from `value` to `guess` so
-we need to reflect that in the `SocialExposure.jsx` componenet. So all we need
+we need to reflect that in the `SocialExposure.jsx` component. So all we need
 to change the following line `const value = otherPlayer.round.get("value") ||
 0;` in `renderSocialInteraction(otherPlayer)` with `const value =
 otherPlayer.round.get("guess") || 0;`.
