@@ -241,7 +241,7 @@ change in the vast majority of cases.
 ### Adding a condition: number of neighbors
 
 Now, let's first add the condition that controls the number of neighbors when in
-the group condition. To do this, go to `imports/experiment/server/conditions.js`
+the group condition. To do this, go to `imports/experiment/server/game/conditions.js`
 and add the `neighborsCount` condition, so you have the following code:
 
 ```javascript
